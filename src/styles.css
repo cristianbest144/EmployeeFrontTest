@@ -1,0 +1,17 @@
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-bottom: none;
+  }
+  
+  .modal-footer {
+    border-top: none;
+  }
+  
+  .modal-body {
+    font-size: 1.1rem;
+  }
+  
+  .modal-title {
+    font-weight: bold;
+  }

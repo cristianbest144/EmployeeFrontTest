@@ -1,0 +1,75 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="card-title text-center">Registro de Usuario</h3>
+            <form #registerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  
+              <!-- Nombre de Usuario -->
+              <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario <span class="text-danger">*</span></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="username" 
+                  [(ngModel)]="registerData.username" 
+                  name="username" 
+                  required
+                  #usernameField="ngModel">
+                <div *ngIf="usernameField.invalid && usernameField.touched" class="text-danger">
+                  <i class="fas fa-exclamation-triangle"></i> El nombre de usuario es requerido.
+                </div>
+              </div>
+  
+              <!-- Contraseña -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña <span class="text-danger">*</span></label>
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  id="password" 
+                  [(ngModel)]="registerData.password" 
+                  name="password" 
+                  required
+                  #passwordField="ngModel">
+                <div *ngIf="passwordField.invalid && passwordField.touched" class="text-danger">
+                  <i class="fas fa-exclamation-triangle"></i> La contraseña es requerida.
+                </div>
+              </div>
+  
+              <!-- Selección de Rol -->
+              <div class="mb-3">
+                <label for="role" class="form-label">Rol <span class="text-danger">*</span></label>
+                <select 
+                  class="form-select" 
+                  id="role" 
+                  [(ngModel)]="registerData.role" 
+                  name="role" 
+                  required
+                  #roleField="ngModel">
+                  <option [ngValue]="1">Admin</option>
+                  <option [ngValue]="2">Usuario</option>
+                </select>
+                <div *ngIf="roleField.invalid && roleField.touched" class="text-danger">
+                  <i class="fas fa-exclamation-triangle"></i> El rol es requerido.
+                </div>
+              </div>
+  
+              <!-- Botones -->
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" (click)="goBack()">
+                  <i class="fas fa-arrow-left"></i> Volver
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                  <i class="fas fa-save"></i> Registrar
+                </button>
+              </div>
+  
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

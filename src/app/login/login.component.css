@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa; 
+  }
+  
+  .card {
+    border-radius: 15px; 
+    border: none; 
+  }
+  
+  .card h3 {
+    color: #007bff; 
+  }
+  
+  .btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff; 
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; 
+  }

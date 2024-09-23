@@ -1,0 +1,103 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>{{ isEditMode ? 'Editar Empleado' : 'Crear Empleado' }}</h3>
+        </div>
+        <div class="card-body p-4">
+          <form #employeeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+            <!-- Nombre -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="name" 
+                  [(ngModel)]="employee.name" 
+                  name="name" 
+                  placeholder="Ingrese el nombre" 
+                  required
+                  #nameField="ngModel">
+              </div>
+              <div *NgIf="nameField.invalid && nameField.touched" class="text-danger mt-2">
+                <i class="fas fa-exclamation-triangle"></i> El nombre es requerido.
+              </div>
+            </div>
+
+            <!-- Posición -->
+            <div class="mb-3">
+              <label for="position" class="form-label">Posición <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="position" 
+                  [(ngModel)]="employee.position" 
+                  name="position" 
+                  placeholder="Ingrese la posición" 
+                  required
+                  #positionField="ngModel">
+              </div>
+              <div *NgIf="positionField.invalid && positionField.touched" class="text-danger mt-2">
+                <i class="fas fa-exclamation-triangle"></i> La posición es requerida.
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="description" 
+                  [(ngModel)]="employee.description" 
+                  name="description" 
+                  placeholder="Ingrese una descripción" 
+                  required
+                  #descriptionField="ngModel">
+              </div>
+              <div *NgIf="descriptionField.invalid && descriptionField.touched" class="text-danger mt-2">
+                <i class="fas fa-exclamation-triangle"></i> La descripción es requerida.
+              </div>
+            </div>
+
+            <!-- Estado -->
+            <div class="mb-3">
+              <label for="status" class="form-label">Estado <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <select 
+                  class="form-control" 
+                  id="status" 
+                  [(ngModel)]="employee.status" 
+                  name="status" 
+                  required
+                  #statusField="ngModel">
+                  <option [ngValue]="true">Activo</option>
+                  <option [ngValue]="false">Inactivo</option>
+                </select>
+              </div>
+              <div *NgIf="statusField.invalid && statusField.touched" class="text-danger mt-2">
+                <i class="fas fa-exclamation-triangle"></i> El estado es requerido.
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" (click)="cancel()">
+                <i class="fas fa-times-circle"></i> Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">
+                <i class="fas fa-save"></i> {{ isEditMode ? 'Actualizar' : 'Crear' }}
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
